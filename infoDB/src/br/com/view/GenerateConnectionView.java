@@ -46,8 +46,10 @@ public class GenerateConnectionView extends JFrame {
         btnConnect = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("infoDB");
         setMinimumSize(new java.awt.Dimension(400, 365));
         setName("frame"); // NOI18N
+        setPreferredSize(new java.awt.Dimension(400, 365));
         setResizable(false);
         setSize(new java.awt.Dimension(400, 365));
         getContentPane().setLayout(null);
@@ -93,11 +95,6 @@ public class GenerateConnectionView extends JFrame {
         lblHost.setBounds(20, 103, 29, 16);
 
         txtHost.setPreferredSize(new java.awt.Dimension(250, 28));
-        txtHost.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtHostActionPerformed(evt);
-            }
-        });
         panelConnectionData.add(txtHost);
         txtHost.setBounds(115, 97, 250, 28);
 
@@ -130,11 +127,6 @@ public class GenerateConnectionView extends JFrame {
         txtSchema.setAlignmentX(0.0F);
         txtSchema.setAlignmentY(0.0F);
         txtSchema.setPreferredSize(new java.awt.Dimension(250, 28));
-        txtSchema.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSchemaActionPerformed(evt);
-            }
-        });
         panelConnectionData.add(txtSchema);
         txtSchema.setBounds(115, 169, 250, 28);
 
@@ -175,20 +167,6 @@ public class GenerateConnectionView extends JFrame {
      *
      * @param evt
      */
-    private void txtHostActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtHostActionPerformed
-    }//GEN-LAST:event_txtHostActionPerformed
-
-    /**
-     *
-     * @param evt
-     */
-    private void txtSchemaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSchemaActionPerformed
-    }//GEN-LAST:event_txtSchemaActionPerformed
-
-    /**
-     *
-     * @param evt
-     */
     private void btnConnectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnConnectActionPerformed
         // Obtêm os dados da GUI
         String database = cboxDatabase.getSelectedItem().toString();
@@ -207,8 +185,8 @@ public class GenerateConnectionView extends JFrame {
                 JOptionPane.showMessageDialog(null, "Connection established!", "", JOptionPane.INFORMATION_MESSAGE);
                 // Fecha a janela de conexão
                 dispose();
-                // Abre a janela de metadados: tables, columns, procedures e functions
-                GenerateDatabaseMetadataView.main(database, gcc);
+                // Abre a janela de metadados: tables, columns, procedures, entre outros
+                GenerateDatabaseMetadataView.main(database, gcc);                
             } catch (RuntimeException e) {
                 // Emite um alerta de erro
                 JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
@@ -231,7 +209,7 @@ public class GenerateConnectionView extends JFrame {
             UIManager.put("PasswordField.showRevealButton", true);
             java.awt.EventQueue.invokeLater(() -> {
                 // Instancia uma janela, tornando-a visível
-                new GenerateConnectionView().setVisible(true);
+                new GenerateConnectionView().setVisible(true);                
             });
         } catch (UnsupportedLookAndFeelException e) {
             throw new RuntimeException(e);

@@ -56,7 +56,6 @@ public class StoredProcedureParameterMetadataDao {
                     case 4:
                     case 5:
                         type = "Not applicable";
-                        System.out.println(rs.getShort("COLUMN_TYPE"));
                         break;
                 }
                 sppm.setMode(type);
