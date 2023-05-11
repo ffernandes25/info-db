@@ -71,9 +71,9 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("infoDB");
         setName("frame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1300, 720));
+        setPreferredSize(new java.awt.Dimension(1225, 645));
         setResizable(false);
-        setSize(new java.awt.Dimension(1300, 720));
+        setSize(new java.awt.Dimension(1225, 645));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -81,9 +81,11 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         });
         getContentPane().setLayout(null);
 
+        scrollDatabaseMetadata.setBorder(null);
+        scrollDatabaseMetadata.setViewportBorder(null);
         scrollDatabaseMetadata.setAlignmentX(0.0F);
         scrollDatabaseMetadata.setAlignmentY(0.0F);
-        scrollDatabaseMetadata.setPreferredSize(new java.awt.Dimension(1220, 625));
+        scrollDatabaseMetadata.setPreferredSize(new java.awt.Dimension(1210, 625));
 
         panelDatabaseMetadata.setAlignmentX(0.0F);
         panelDatabaseMetadata.setAlignmentY(0.0F);
@@ -251,7 +253,7 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         scrollDatabaseMetadata.setViewportView(panelDatabaseMetadata);
 
         getContentPane().add(scrollDatabaseMetadata);
-        scrollDatabaseMetadata.setBounds(35, 20, 1220, 625);
+        scrollDatabaseMetadata.setBounds(0, 0, 1210, 625);
 
         pack();
         setLocationRelativeTo(null);
