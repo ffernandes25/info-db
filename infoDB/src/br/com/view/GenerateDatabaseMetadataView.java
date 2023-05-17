@@ -55,25 +55,35 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         btnLoadStoredProcedureParameterMetadata = new javax.swing.JButton();
         btnGenerateBean = new javax.swing.JButton();
         lblTableMetadata = new javax.swing.JLabel();
-        lblStoredProcedureMetadata = new javax.swing.JLabel();
+        lblFunctionParameterMetadata = new javax.swing.JLabel();
         separatorStoredProcedureMetadata = new javax.swing.JSeparator();
         separatorStoredProcedureParameterMetadata = new javax.swing.JSeparator();
         scrollStoredProcedureMetadata = new javax.swing.JScrollPane();
         scrollStoredProcedureParameterMetadata = new javax.swing.JScrollPane();
         btnLoadColumnMetadata = new javax.swing.JButton();
-        btnLoadStoredProcedureMetadata = new javax.swing.JButton();
+        btnLoadFunctionParameterMetadata = new javax.swing.JButton();
         btnLoadTableMetadata = new javax.swing.JButton();
         lblTableMetadataCount = new javax.swing.JLabel();
         lblColumnMetadataCount = new javax.swing.JLabel();
+        lblFunctionParameterMetadataCount = new javax.swing.JLabel();
+        lblStoredProcedureMetadata = new javax.swing.JLabel();
+        lblFunctionMetadata = new javax.swing.JLabel();
+        separatorFunctionMetadata = new javax.swing.JSeparator();
+        separatorFunctionParameterMetadata = new javax.swing.JSeparator();
+        scrollFunctionMetadata = new javax.swing.JScrollPane();
+        scrollFunctionParameterMetadata = new javax.swing.JScrollPane();
         lblStoredProcedureMetadataCount = new javax.swing.JLabel();
         lblStoredProcedureParameterMetadataCount = new javax.swing.JLabel();
+        lblFunctionMetadataCount = new javax.swing.JLabel();
+        btnLoadStoredProcedureMetadata1 = new javax.swing.JButton();
+        btnLoadFunctionMetadata = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
         setTitle("infoDB");
         setName("frame"); // NOI18N
-        setPreferredSize(new java.awt.Dimension(1225, 645));
+        setPreferredSize(new java.awt.Dimension(1205, 638));
         setResizable(false);
-        setSize(new java.awt.Dimension(1225, 645));
+        setSize(new java.awt.Dimension(1205, 638));
         addWindowListener(new java.awt.event.WindowAdapter() {
             public void windowClosing(java.awt.event.WindowEvent evt) {
                 formWindowClosing(evt);
@@ -85,12 +95,12 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         scrollDatabaseMetadata.setViewportBorder(null);
         scrollDatabaseMetadata.setAlignmentX(0.0F);
         scrollDatabaseMetadata.setAlignmentY(0.0F);
-        scrollDatabaseMetadata.setPreferredSize(new java.awt.Dimension(1210, 625));
+        scrollDatabaseMetadata.setPreferredSize(new java.awt.Dimension(1190, 610));
 
         panelDatabaseMetadata.setAlignmentX(0.0F);
         panelDatabaseMetadata.setAlignmentY(0.0F);
         panelDatabaseMetadata.setMaximumSize(new java.awt.Dimension(0, 0));
-        panelDatabaseMetadata.setPreferredSize(new java.awt.Dimension(1200, 733));
+        panelDatabaseMetadata.setPreferredSize(new java.awt.Dimension(1195, 900));
         panelDatabaseMetadata.setLayout(null);
 
         lblColumnMetadata.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
@@ -98,20 +108,20 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         lblColumnMetadata.setAlignmentY(0.0F);
         lblColumnMetadata.setPreferredSize(new java.awt.Dimension(560, 20));
         panelDatabaseMetadata.add(lblColumnMetadata);
-        lblColumnMetadata.setBounds(620, 20, 560, 20);
+        lblColumnMetadata.setBounds(600, 20, 560, 20);
 
         separatorColumnMetadata.setAlignmentX(0.0F);
         separatorColumnMetadata.setAlignmentY(0.0F);
         separatorColumnMetadata.setPreferredSize(new java.awt.Dimension(560, 2));
         panelDatabaseMetadata.add(separatorColumnMetadata);
-        separatorColumnMetadata.setBounds(620, 45, 560, 2);
+        separatorColumnMetadata.setBounds(600, 45, 560, 2);
 
         lblStoredProcedureParameterMetadata.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
         lblStoredProcedureParameterMetadata.setText("Parameters");
         lblStoredProcedureParameterMetadata.setAlignmentY(0.0F);
         lblStoredProcedureParameterMetadata.setPreferredSize(new java.awt.Dimension(560, 20));
         panelDatabaseMetadata.add(lblStoredProcedureParameterMetadata);
-        lblStoredProcedureParameterMetadata.setBounds(620, 307, 560, 20);
+        lblStoredProcedureParameterMetadata.setBounds(600, 307, 560, 20);
 
         separatorTableMetadata.setAlignmentX(0.0F);
         separatorTableMetadata.setAlignmentY(0.0F);
@@ -129,7 +139,7 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         scrollColumnMetadata.setAlignmentY(0.0F);
         scrollColumnMetadata.setPreferredSize(new java.awt.Dimension(560, 195));
         panelDatabaseMetadata.add(scrollColumnMetadata);
-        scrollColumnMetadata.setBounds(620, 62, 560, 195);
+        scrollColumnMetadata.setBounds(600, 62, 560, 195);
 
         btnLoadStoredProcedureParameterMetadata.setText("Load");
         btnLoadStoredProcedureParameterMetadata.setAlignmentY(0.0F);
@@ -142,7 +152,7 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
             }
         });
         panelDatabaseMetadata.add(btnLoadStoredProcedureParameterMetadata);
-        btnLoadStoredProcedureParameterMetadata.setBounds(1101, 554, 79, 28);
+        btnLoadStoredProcedureParameterMetadata.setBounds(1081, 554, 79, 28);
 
         btnGenerateBean.setText("Generate Bean");
         btnGenerateBean.setAlignmentY(0.0F);
@@ -163,12 +173,12 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         panelDatabaseMetadata.add(lblTableMetadata);
         lblTableMetadata.setBounds(20, 20, 560, 20);
 
-        lblStoredProcedureMetadata.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
-        lblStoredProcedureMetadata.setText("Stored Procedures");
-        lblStoredProcedureMetadata.setAlignmentY(0.0F);
-        lblStoredProcedureMetadata.setPreferredSize(new java.awt.Dimension(560, 20));
-        panelDatabaseMetadata.add(lblStoredProcedureMetadata);
-        lblStoredProcedureMetadata.setBounds(20, 307, 560, 20);
+        lblFunctionParameterMetadata.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblFunctionParameterMetadata.setText("Parameters");
+        lblFunctionParameterMetadata.setAlignmentY(0.0F);
+        lblFunctionParameterMetadata.setPreferredSize(new java.awt.Dimension(560, 20));
+        panelDatabaseMetadata.add(lblFunctionParameterMetadata);
+        lblFunctionParameterMetadata.setBounds(600, 594, 560, 20);
 
         separatorStoredProcedureMetadata.setAlignmentX(0.0F);
         separatorStoredProcedureMetadata.setAlignmentY(0.0F);
@@ -180,7 +190,7 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         separatorStoredProcedureParameterMetadata.setAlignmentY(0.0F);
         separatorStoredProcedureParameterMetadata.setPreferredSize(new java.awt.Dimension(560, 2));
         panelDatabaseMetadata.add(separatorStoredProcedureParameterMetadata);
-        separatorStoredProcedureParameterMetadata.setBounds(620, 332, 560, 2);
+        separatorStoredProcedureParameterMetadata.setBounds(600, 332, 560, 2);
 
         scrollStoredProcedureMetadata.setAlignmentX(0.0F);
         scrollStoredProcedureMetadata.setAlignmentY(0.0F);
@@ -192,7 +202,7 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         scrollStoredProcedureParameterMetadata.setAlignmentY(0.0F);
         scrollStoredProcedureParameterMetadata.setPreferredSize(new java.awt.Dimension(560, 195));
         panelDatabaseMetadata.add(scrollStoredProcedureParameterMetadata);
-        scrollStoredProcedureParameterMetadata.setBounds(620, 349, 560, 195);
+        scrollStoredProcedureParameterMetadata.setBounds(600, 349, 560, 195);
 
         btnLoadColumnMetadata.setText("Load");
         btnLoadColumnMetadata.setAlignmentY(0.0F);
@@ -205,19 +215,20 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
             }
         });
         panelDatabaseMetadata.add(btnLoadColumnMetadata);
-        btnLoadColumnMetadata.setBounds(1101, 267, 79, 28);
+        btnLoadColumnMetadata.setBounds(1081, 267, 79, 28);
 
-        btnLoadStoredProcedureMetadata.setText("Load");
-        btnLoadStoredProcedureMetadata.setAlignmentY(0.0F);
-        btnLoadStoredProcedureMetadata.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
-        btnLoadStoredProcedureMetadata.setPreferredSize(new java.awt.Dimension(79, 28));
-        btnLoadStoredProcedureMetadata.addActionListener(new java.awt.event.ActionListener() {
+        btnLoadFunctionParameterMetadata.setText("Load");
+        btnLoadFunctionParameterMetadata.setAlignmentY(0.0F);
+        btnLoadFunctionParameterMetadata.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLoadFunctionParameterMetadata.setEnabled(false);
+        btnLoadFunctionParameterMetadata.setPreferredSize(new java.awt.Dimension(79, 28));
+        btnLoadFunctionParameterMetadata.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnLoadStoredProcedureMetadataActionPerformed(evt);
+                btnLoadFunctionParameterMetadataActionPerformed(evt);
             }
         });
-        panelDatabaseMetadata.add(btnLoadStoredProcedureMetadata);
-        btnLoadStoredProcedureMetadata.setBounds(501, 554, 79, 28);
+        panelDatabaseMetadata.add(btnLoadFunctionParameterMetadata);
+        btnLoadFunctionParameterMetadata.setBounds(1081, 841, 79, 28);
 
         btnLoadTableMetadata.setText("Load");
         btnLoadTableMetadata.setAlignmentY(0.0F);
@@ -239,21 +250,94 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         lblColumnMetadataCount.setAlignmentY(0.0F);
         lblColumnMetadataCount.setPreferredSize(new java.awt.Dimension(75, 16));
         panelDatabaseMetadata.add(lblColumnMetadataCount);
-        lblColumnMetadataCount.setBounds(620, 273, 75, 16);
+        lblColumnMetadataCount.setBounds(600, 273, 75, 16);
+
+        lblFunctionParameterMetadataCount.setAlignmentY(0.0F);
+        lblFunctionParameterMetadataCount.setPreferredSize(new java.awt.Dimension(75, 16));
+        panelDatabaseMetadata.add(lblFunctionParameterMetadataCount);
+        lblFunctionParameterMetadataCount.setBounds(600, 847, 75, 16);
+
+        lblStoredProcedureMetadata.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblStoredProcedureMetadata.setText("Stored Procedures");
+        lblStoredProcedureMetadata.setAlignmentY(0.0F);
+        lblStoredProcedureMetadata.setPreferredSize(new java.awt.Dimension(560, 20));
+        panelDatabaseMetadata.add(lblStoredProcedureMetadata);
+        lblStoredProcedureMetadata.setBounds(20, 307, 560, 20);
+
+        lblFunctionMetadata.setFont(new java.awt.Font("sansserif", 1, 14)); // NOI18N
+        lblFunctionMetadata.setText("Functions");
+        lblFunctionMetadata.setAlignmentY(0.0F);
+        lblFunctionMetadata.setPreferredSize(new java.awt.Dimension(560, 20));
+        panelDatabaseMetadata.add(lblFunctionMetadata);
+        lblFunctionMetadata.setBounds(20, 594, 560, 20);
+
+        separatorFunctionMetadata.setAlignmentX(0.0F);
+        separatorFunctionMetadata.setAlignmentY(0.0F);
+        separatorFunctionMetadata.setPreferredSize(new java.awt.Dimension(560, 2));
+        panelDatabaseMetadata.add(separatorFunctionMetadata);
+        separatorFunctionMetadata.setBounds(20, 619, 560, 2);
+
+        separatorFunctionParameterMetadata.setAlignmentX(0.0F);
+        separatorFunctionParameterMetadata.setAlignmentY(0.0F);
+        separatorFunctionParameterMetadata.setPreferredSize(new java.awt.Dimension(560, 2));
+        panelDatabaseMetadata.add(separatorFunctionParameterMetadata);
+        separatorFunctionParameterMetadata.setBounds(600, 619, 560, 2);
+
+        scrollFunctionMetadata.setAlignmentX(0.0F);
+        scrollFunctionMetadata.setAlignmentY(0.0F);
+        scrollFunctionMetadata.setPreferredSize(new java.awt.Dimension(560, 195));
+        panelDatabaseMetadata.add(scrollFunctionMetadata);
+        scrollFunctionMetadata.setBounds(20, 636, 560, 195);
+
+        scrollFunctionParameterMetadata.setAlignmentX(0.0F);
+        scrollFunctionParameterMetadata.setAlignmentY(0.0F);
+        scrollFunctionParameterMetadata.setPreferredSize(new java.awt.Dimension(560, 195));
+        panelDatabaseMetadata.add(scrollFunctionParameterMetadata);
+        scrollFunctionParameterMetadata.setBounds(600, 636, 560, 195);
 
         lblStoredProcedureMetadataCount.setAlignmentY(0.0F);
         lblStoredProcedureMetadataCount.setPreferredSize(new java.awt.Dimension(75, 16));
         panelDatabaseMetadata.add(lblStoredProcedureMetadataCount);
         lblStoredProcedureMetadataCount.setBounds(20, 560, 75, 16);
 
+        lblStoredProcedureParameterMetadataCount.setAlignmentY(0.0F);
         lblStoredProcedureParameterMetadataCount.setPreferredSize(new java.awt.Dimension(75, 16));
         panelDatabaseMetadata.add(lblStoredProcedureParameterMetadataCount);
-        lblStoredProcedureParameterMetadataCount.setBounds(620, 560, 75, 16);
+        lblStoredProcedureParameterMetadataCount.setBounds(600, 560, 75, 16);
+
+        lblFunctionMetadataCount.setAlignmentY(0.0F);
+        lblFunctionMetadataCount.setPreferredSize(new java.awt.Dimension(75, 16));
+        panelDatabaseMetadata.add(lblFunctionMetadataCount);
+        lblFunctionMetadataCount.setBounds(20, 847, 75, 16);
+
+        btnLoadStoredProcedureMetadata1.setText("Load");
+        btnLoadStoredProcedureMetadata1.setAlignmentY(0.0F);
+        btnLoadStoredProcedureMetadata1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLoadStoredProcedureMetadata1.setPreferredSize(new java.awt.Dimension(79, 28));
+        btnLoadStoredProcedureMetadata1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadStoredProcedureMetadata1ActionPerformed(evt);
+            }
+        });
+        panelDatabaseMetadata.add(btnLoadStoredProcedureMetadata1);
+        btnLoadStoredProcedureMetadata1.setBounds(501, 554, 79, 28);
+
+        btnLoadFunctionMetadata.setText("Load");
+        btnLoadFunctionMetadata.setAlignmentY(0.0F);
+        btnLoadFunctionMetadata.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        btnLoadFunctionMetadata.setPreferredSize(new java.awt.Dimension(79, 28));
+        btnLoadFunctionMetadata.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLoadFunctionMetadataActionPerformed(evt);
+            }
+        });
+        panelDatabaseMetadata.add(btnLoadFunctionMetadata);
+        btnLoadFunctionMetadata.setBounds(501, 841, 79, 28);
 
         scrollDatabaseMetadata.setViewportView(panelDatabaseMetadata);
 
         getContentPane().add(scrollDatabaseMetadata);
-        scrollDatabaseMetadata.setBounds(0, 0, 1210, 625);
+        scrollDatabaseMetadata.setBounds(0, 0, 1190, 610);
 
         pack();
         setLocationRelativeTo(null);
@@ -456,26 +540,9 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
      * 
      * @param evt 
      */
-    private void btnLoadStoredProcedureMetadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadStoredProcedureMetadataActionPerformed
-        try {
-            // Gera os metadados das stored procedures
-            GenerateStoredProcedureMetadataController gtmc = new GenerateStoredProcedureMetadataController();
-            List<StoredProcedureMetadata> spmList = gtmc.generate();
-            // Define o nome das colunas
-            String columnsTitle[] = {"Name", "Type", "Comment"};
-            // Popula a tabela
-            tblStoredProcedureMetadata = getPopulatedTable(columnsTitle, spmList);
-            // Adiciona ao viewport a tabela populada
-            scrollStoredProcedureMetadata.setViewportView(tblStoredProcedureMetadata);
-            // Seta a quantidade de registros
-            lblStoredProcedureMetadataCount.setText("Count: ".concat(String.valueOf(spmList.size())));
-            // Emite um alerta de sucesso
-            JOptionPane.showMessageDialog(null, "Stored procedure metadata has been loaded!", "", JOptionPane.INFORMATION_MESSAGE);
-        } catch (RuntimeException e) {
-            // Emite um alerta de erro
-            JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
-        }
-    }//GEN-LAST:event_btnLoadStoredProcedureMetadataActionPerformed
+    private void btnLoadFunctionParameterMetadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadFunctionParameterMetadataActionPerformed
+        
+    }//GEN-LAST:event_btnLoadFunctionParameterMetadataActionPerformed
 
     /**
      * 
@@ -516,6 +583,31 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_formWindowClosing
 
+    private void btnLoadStoredProcedureMetadata1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadStoredProcedureMetadata1ActionPerformed
+        try {
+            // Gera os metadados das stored procedures
+            GenerateStoredProcedureMetadataController gtmc = new GenerateStoredProcedureMetadataController();
+            List<StoredProcedureMetadata> spmList = gtmc.generate();
+            // Define o nome das colunas
+            String columnsTitle[] = {"Name", "Type", "Comment"};
+            // Popula a tabela
+            tblStoredProcedureMetadata = getPopulatedTable(columnsTitle, spmList);
+            // Adiciona ao viewport a tabela populada
+            scrollStoredProcedureMetadata.setViewportView(tblStoredProcedureMetadata);
+            // Seta a quantidade de registros
+            lblStoredProcedureMetadataCount.setText("Count: ".concat(String.valueOf(spmList.size())));
+            // Emite um alerta de sucesso
+            JOptionPane.showMessageDialog(null, "Stored procedure metadata has been loaded!", "", JOptionPane.INFORMATION_MESSAGE);
+        } catch (RuntimeException e) {
+            // Emite um alerta de erro
+            JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+        }
+    }//GEN-LAST:event_btnLoadStoredProcedureMetadata1ActionPerformed
+
+    private void btnLoadFunctionMetadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadFunctionMetadataActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnLoadFunctionMetadataActionPerformed
+
     /**
      * 
      * @param dbName
@@ -542,11 +634,17 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnGenerateBean;
     private javax.swing.JButton btnLoadColumnMetadata;
-    private javax.swing.JButton btnLoadStoredProcedureMetadata;
+    private javax.swing.JButton btnLoadFunctionMetadata;
+    private javax.swing.JButton btnLoadFunctionParameterMetadata;
+    private javax.swing.JButton btnLoadStoredProcedureMetadata1;
     private javax.swing.JButton btnLoadStoredProcedureParameterMetadata;
     private javax.swing.JButton btnLoadTableMetadata;
     private javax.swing.JLabel lblColumnMetadata;
     private javax.swing.JLabel lblColumnMetadataCount;
+    private javax.swing.JLabel lblFunctionMetadata;
+    private javax.swing.JLabel lblFunctionMetadataCount;
+    private javax.swing.JLabel lblFunctionParameterMetadata;
+    private javax.swing.JLabel lblFunctionParameterMetadataCount;
     private javax.swing.JLabel lblStoredProcedureMetadata;
     private javax.swing.JLabel lblStoredProcedureMetadataCount;
     private javax.swing.JLabel lblStoredProcedureParameterMetadata;
@@ -556,10 +654,14 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
     private javax.swing.JPanel panelDatabaseMetadata;
     private javax.swing.JScrollPane scrollColumnMetadata;
     private javax.swing.JScrollPane scrollDatabaseMetadata;
+    private javax.swing.JScrollPane scrollFunctionMetadata;
+    private javax.swing.JScrollPane scrollFunctionParameterMetadata;
     private javax.swing.JScrollPane scrollStoredProcedureMetadata;
     private javax.swing.JScrollPane scrollStoredProcedureParameterMetadata;
     private javax.swing.JScrollPane scrollTableMetadata;
     private javax.swing.JSeparator separatorColumnMetadata;
+    private javax.swing.JSeparator separatorFunctionMetadata;
+    private javax.swing.JSeparator separatorFunctionParameterMetadata;
     private javax.swing.JSeparator separatorStoredProcedureMetadata;
     private javax.swing.JSeparator separatorStoredProcedureParameterMetadata;
     private javax.swing.JSeparator separatorTableMetadata;
