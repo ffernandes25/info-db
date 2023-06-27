@@ -3,10 +3,12 @@ package br.com.view;
 import br.com.controller.GenerateBeanController;
 import br.com.controller.GenerateColumnMetadataController;
 import br.com.controller.GenerateConnectionController;
+import br.com.controller.GenerateFunctionMetadataController;
 import br.com.controller.GenerateStoredProcedureMetadataController;
 import br.com.controller.GenerateStoredProcedureParameterMetadataController;
 import br.com.controller.GenerateTableMetadataController;
 import br.com.model.entity.ColumnMetadata;
+import br.com.model.entity.FunctionMetadata;
 import br.com.model.entity.StoredProcedureMetadata;
 import br.com.model.entity.StoredProcedureParameterMetadata;
 import br.com.model.entity.TableMetadata;
@@ -394,6 +396,13 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
                     });
                 }
                 break;
+            case "FunctionMetadata":
+                for (FunctionMetadata fm : (List<FunctionMetadata>) metadata) {
+                    dtModel.addRow(new Object[]{
+                        fm.getName(), fm.getType(), fm.getComment()
+                    });
+                }
+                break;
         }
         // Cria a tabela a partir do modelo (com a edição de células bloqueada)
         JTable tbl = new JTable(dtModel) {
@@ -605,7 +614,24 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
     }//GEN-LAST:event_btnLoadStoredProcedureMetadata1ActionPerformed
 
     private void btnLoadFunctionMetadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadFunctionMetadataActionPerformed
-        // TODO add your handling code here:
+        try {
+            // Gera os metadados das functions
+            GenerateFunctionMetadataController gfmc = new GenerateFunctionMetadataController();
+            List<FunctionMetadata> fmList = gfmc.generate();
+            // Define o nome das colunas
+            String columnsTitle[] = {"Name", "Type", "Comment"};
+            // Popula a tabela            
+            tblFunctionMetadata = getPopulatedTable(columnsTitle, fmList);
+            // Adiciona ao viewport a tabela populada
+            scrollFunctionMetadata.setViewportView(tblFunctionMetadata);
+            // Seta a quantidade de registros
+            lblFunctionMetadataCount.setText("Count: ".concat(String.valueOf(fmList.size())));
+            // Emite um alerta de sucesso
+            JOptionPane.showMessageDialog(null, "Function metadata has been loaded!", "", JOptionPane.INFORMATION_MESSAGE);
+        } catch (RuntimeException e) {
+            // Emite um alerta de erro
+            JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btnLoadFunctionMetadataActionPerformed
 
     /**
@@ -670,6 +696,7 @@ public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
     private JTable tblColumnMetadata;
     private JTable tblStoredProcedureMetadata;
     private JTable tblStoredProcedureParameterMetadata;
+    private JTable tblFunctionMetadata;
     private static String database;
     private static GenerateConnectionController gcc;
 

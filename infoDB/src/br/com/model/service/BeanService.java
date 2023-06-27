@@ -16,7 +16,7 @@ import java.util.List;
  * JavaBean ou Bean é uma classe Java que segue a convenção: Ter um construtor
  * padrão público, explícito e sem arqumentos; Ter atributos privados, e ter
  * métodos acessores (setters e getters) para cada um destes; Ser uma classe
- * serializável
+ * serializável.
  *
  * @author Fábio Fernandes
  * @version 1.0
