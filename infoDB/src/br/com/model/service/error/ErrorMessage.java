@@ -43,6 +43,11 @@ public class ErrorMessage {
     public static String ERROR_FUNCTION_METADATA = "Could not load function metadata!\n";
     
     /**
+     * Error message: impossibilidade de carga de functionParameterMetadata.
+     */
+    public static String ERROR_FUNCTION_PARAMETER_METADATA = "Could not load function parameter metadata!\n";
+    
+    /**
      * Error message: impossibilidade de geração de arquivo (bean).
      */
     public static String ERROR_GENERATE_FILE = "Could not to generate file!\n";
