@@ -31,7 +31,7 @@ public class GenerateConnectionController {
                     break;
                 case "Oracle":
                     driver = "oracle.jdbc.driver.OracleDriver";
-                    url = "jdbc:oracle:thin:@".concat(host).concat(":").concat(port).concat(":").concat(schema);
+                    url = "jdbc:oracle:thin:@".concat(host).concat(":").concat(port).concat("/").concat(schema);
                     break;
             }
             ConnectionFactory.openConnection(url, username, password, driver);

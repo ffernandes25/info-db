@@ -19,6 +19,7 @@ import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
 import java.util.List;
+import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.JTable;
 import javax.swing.SwingConstants;
@@ -32,7 +33,7 @@ import javax.swing.table.DefaultTableModel;
  * @author Fábio Fernandes
  * @version 1.0
  */
-public class GenerateDatabaseMetadataView extends javax.swing.JFrame {
+public class GenerateDatabaseMetadataView extends JFrame {
 
     /**
      *
