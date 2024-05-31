@@ -1,2 +1,4 @@
-/infoDB/nbproject/
 /infoDB/build/
+/infoDB/nbproject/
+/infoDB/nbproject/*
+/infoDB/build.xml
