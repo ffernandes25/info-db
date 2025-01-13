@@ -1,20 +1,10 @@
 package view;
 
+import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import controller.GenerateBeanController;
 import controller.GenerateColumnMetadataController;
 import controller.GenerateConnectionController;
-import controller.GenerateFunctionMetadataController;
-import controller.GenerateFunctionParameterMetadataController;
-import controller.GenerateStoredProcedureMetadataController;
-import controller.GenerateStoredProcedureParameterMetadataController;
 import controller.GenerateTableMetadataController;
-import model.entity.ColumnMetadata;
-import model.entity.FunctionMetadata;
-import model.entity.FunctionParameterMetadata;
-import model.entity.StoredProcedureMetadata;
-import model.entity.StoredProcedureParameterMetadata;
-import model.entity.TableMetadata;
-import com.formdev.flatlaf.themes.FlatMacDarkLaf;
 import java.awt.Font;
 import java.awt.event.FocusEvent;
 import java.awt.event.FocusListener;
@@ -27,6 +17,8 @@ import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.DefaultTableModel;
+import model.entity.ColumnMetadata;
+import model.entity.TableMetadata;
 
 /**
  *
@@ -349,10 +341,10 @@ public class GenerateDatabaseMetadataView extends JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     /**
-     * 
+     *
      * @param columnsTitle
      * @param metadata
-     * @return 
+     * @return
      */
     private JTable getPopulatedTable(String columnsTitle[], List<?> metadata) {
         // Cria um modelo para a tabela
@@ -385,34 +377,6 @@ public class GenerateDatabaseMetadataView extends JFrame {
                     }
                 }
                 break;
-            case "StoredProcedureMetadata":
-                for (StoredProcedureMetadata spm : (List<StoredProcedureMetadata>) metadata) {
-                    dtModel.addRow(new Object[]{
-                        spm.getName(), spm.getType(), spm.getComment()
-                    });
-                }
-                break;
-            case "StoredProcedureParameterMetadata":
-                for (StoredProcedureParameterMetadata sppm : (List<StoredProcedureParameterMetadata>) metadata) {
-                    dtModel.addRow(new Object[]{
-                        sppm.getName(), sppm.getMode(), sppm.getDatatype(), sppm.getPrecision(), sppm.getLength(), sppm.isNullable(), sppm.getComment()
-                    });
-                }
-                break;
-            case "FunctionMetadata":
-                for (FunctionMetadata fm : (List<FunctionMetadata>) metadata) {
-                    dtModel.addRow(new Object[]{
-                        fm.getName(), fm.getType(), fm.getComment()
-                    });
-                }
-                break;                
-            case "FunctionParameterMetadata":
-                for (FunctionParameterMetadata fpm : (List<FunctionParameterMetadata>) metadata) {
-                    dtModel.addRow(new Object[]{
-                        fpm.getName(), fpm.getMode(), fpm.getDatatype(), fpm.getPrecision(), fpm.getLength(), fpm.isNullable(), fpm.getComment()
-                    });
-                }
-                break;
         }
         // Cria a tabela a partir do modelo (com a edição de células bloqueada)
         JTable tbl = new JTable(dtModel) {
@@ -435,18 +399,9 @@ public class GenerateDatabaseMetadataView extends JFrame {
         tbl.addFocusListener(new FocusListener() {
             @Override
             public void focusGained(FocusEvent evt) {
-                switch (metadataClassName) {
-                    case "TableMetadata":
-                        tableMetadataFocusGained(evt);
-                        break;
-                    case "StoredProcedureMetadata":
-                        storedProcedureMetadataFocusGained(evt);
-                        break;
-                    case "FunctionMetadata":
-                        functionMetadataFocusGained(evt);
-                        break;
-                }
+                tableMetadataFocusGained(evt);
             }
+
             @Override
             public void focusLost(FocusEvent e) {
             }
@@ -455,8 +410,8 @@ public class GenerateDatabaseMetadataView extends JFrame {
     }
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void tableMetadataFocusGained(FocusEvent evt) {
         // Habilita o botão de geração de Bean
@@ -466,55 +421,16 @@ public class GenerateDatabaseMetadataView extends JFrame {
     }
 
     /**
-     * 
-     * @param evt 
-     */
-    private void storedProcedureMetadataFocusGained(FocusEvent evt) {
-        // Habilita o botão de carga de StoredProcedureParameter
-        btnLoadStoredProcedureParameterMetadata.setEnabled(true);
-    }
-    
-    /**
-     * 
-     * @param evt 
-     */
-    private void functionMetadataFocusGained(FocusEvent evt) {
-        // Habilita o botão de carga de FunctionParameter
-        btnLoadFunctionParameterMetadata.setEnabled(true);
-    }
-
-    /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnLoadStoredProcedureParameterMetadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadStoredProcedureParameterMetadataActionPerformed
-        try {
-            // Obtêm o nome da stored procedure selecionada
-            String storedProcedureNameSelected = tblStoredProcedureMetadata.getValueAt(tblStoredProcedureMetadata.getSelectedRow(), 0).toString();
-            // Gera os metadados dos parâmetros das procedures
-            GenerateStoredProcedureParameterMetadataController gsppmc = new GenerateStoredProcedureParameterMetadataController();
-            List<StoredProcedureParameterMetadata> sppmList = gsppmc.generate(storedProcedureNameSelected);
-            // Define o nome das colunas
-            String columnsTitle[] = {"Name", "Mode", "Datatype", "Precision", "Length", "Is Nullable?", "Comment"};
-            // Popula a tabela
-            tblStoredProcedureParameterMetadata = getPopulatedTable(columnsTitle, sppmList);
-            // Adiciona ao viewport a tabela populada
-            scrollStoredProcedureParameterMetadata.setViewportView(tblStoredProcedureParameterMetadata);
-            // Modifica o título, incluindo o nome da stored procedure
-            lblStoredProcedureParameterMetadata.setText("Parameters: ".concat(storedProcedureNameSelected));
-            // Seta a quantidade de registros
-            lblStoredProcedureParameterMetadataCount.setText("Count: ".concat(String.valueOf(sppmList.size())));
-            // Emite um alerta de sucesso
-            JOptionPane.showMessageDialog(null, "Stored procedure parameter metadata has been loaded!", "", JOptionPane.INFORMATION_MESSAGE);
-        } catch (RuntimeException e) {
-            // Emite um alerta de erro
-            JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
-        }
+
     }//GEN-LAST:event_btnLoadStoredProcedureParameterMetadataActionPerformed
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnGenerateBeanActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGenerateBeanActionPerformed
         try {
@@ -535,8 +451,8 @@ public class GenerateDatabaseMetadataView extends JFrame {
     }//GEN-LAST:event_btnGenerateBeanActionPerformed
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnLoadColumnMetadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadColumnMetadataActionPerformed
         try {
@@ -568,37 +484,16 @@ public class GenerateDatabaseMetadataView extends JFrame {
     }//GEN-LAST:event_btnLoadColumnMetadataActionPerformed
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnLoadFunctionParameterMetadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadFunctionParameterMetadataActionPerformed
-        try {
-            // Obtêm o nome da function selecionada
-            String functionNameSelected = tblFunctionMetadata.getValueAt(tblFunctionMetadata.getSelectedRow(), 0).toString();
-            // Gera os metadados dos parâmetros das functions
-            GenerateFunctionParameterMetadataController gfpmc = new GenerateFunctionParameterMetadataController();
-            List<FunctionParameterMetadata> fpmList = gfpmc.generate(functionNameSelected);
-            // Define o nome das colunas
-            String columnsTitle[] = {"Name", "Mode", "Datatype", "Precision", "Length", "Is Nullable?", "Comment"};
-            // Popula a tabela
-            tblFunctionParameterMetadata = getPopulatedTable(columnsTitle, fpmList);
-            // Adiciona ao viewport a tabela populada
-            scrollFunctionParameterMetadata.setViewportView(tblFunctionParameterMetadata);
-            // Modifica o título, incluindo o nome da function
-            lblFunctionParameterMetadata.setText("Parameters: ".concat(functionNameSelected));
-            // Seta a quantidade de registros
-            lblFunctionParameterMetadataCount.setText("Count: ".concat(String.valueOf(fpmList.size())));
-            // Emite um alerta de sucesso
-            JOptionPane.showMessageDialog(null, "Function parameter metadata has been loaded!", "", JOptionPane.INFORMATION_MESSAGE);
-        } catch (RuntimeException e) {
-            // Emite um alerta de erro
-            JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
-        }
+
     }//GEN-LAST:event_btnLoadFunctionParameterMetadataActionPerformed
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void btnLoadTableMetadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadTableMetadataActionPerformed
         try {
@@ -622,8 +517,8 @@ public class GenerateDatabaseMetadataView extends JFrame {
     }//GEN-LAST:event_btnLoadTableMetadataActionPerformed
 
     /**
-     * 
-     * @param evt 
+     *
+     * @param evt
      */
     private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
         int i = JOptionPane.showConfirmDialog(null, "Do you really want to disconnect?", "", JOptionPane.YES_NO_OPTION);
@@ -636,51 +531,17 @@ public class GenerateDatabaseMetadataView extends JFrame {
     }//GEN-LAST:event_formWindowClosing
 
     private void btnLoadStoredProcedureMetadata1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadStoredProcedureMetadata1ActionPerformed
-        try {
-            // Gera os metadados das stored procedures
-            GenerateStoredProcedureMetadataController gtmc = new GenerateStoredProcedureMetadataController();
-            List<StoredProcedureMetadata> spmList = gtmc.generate();
-            // Define o nome das colunas
-            String columnsTitle[] = {"Name", "Type", "Comment"};
-            // Popula a tabela
-            tblStoredProcedureMetadata = getPopulatedTable(columnsTitle, spmList);
-            // Adiciona ao viewport a tabela populada
-            scrollStoredProcedureMetadata.setViewportView(tblStoredProcedureMetadata);
-            // Seta a quantidade de registros
-            lblStoredProcedureMetadataCount.setText("Count: ".concat(String.valueOf(spmList.size())));
-            // Emite um alerta de sucesso
-            JOptionPane.showMessageDialog(null, "Stored procedure metadata has been loaded!", "", JOptionPane.INFORMATION_MESSAGE);
-        } catch (RuntimeException e) {
-            // Emite um alerta de erro
-            JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
-        }
+
     }//GEN-LAST:event_btnLoadStoredProcedureMetadata1ActionPerformed
 
     private void btnLoadFunctionMetadataActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLoadFunctionMetadataActionPerformed
-        try {
-            // Gera os metadados das functions
-            GenerateFunctionMetadataController gfmc = new GenerateFunctionMetadataController();
-            List<FunctionMetadata> fmList = gfmc.generate();
-            // Define o nome das colunas
-            String columnsTitle[] = {"Name", "Type", "Comment"};
-            // Popula a tabela            
-            tblFunctionMetadata = getPopulatedTable(columnsTitle, fmList);
-            // Adiciona ao viewport a tabela populada
-            scrollFunctionMetadata.setViewportView(tblFunctionMetadata);
-            // Seta a quantidade de registros
-            lblFunctionMetadataCount.setText("Count: ".concat(String.valueOf(fmList.size())));
-            // Emite um alerta de sucesso
-            JOptionPane.showMessageDialog(null, "Function metadata has been loaded!", "", JOptionPane.INFORMATION_MESSAGE);
-        } catch (RuntimeException e) {
-            // Emite um alerta de erro
-            JOptionPane.showMessageDialog(null, e.getMessage(), "", JOptionPane.ERROR_MESSAGE);
-        }
+
     }//GEN-LAST:event_btnLoadFunctionMetadataActionPerformed
 
     /**
-     * 
+     *
      * @param dbName
-     * @param gcController 
+     * @param gcController
      */
     public static void main(String dbName, GenerateConnectionController gcController) {
         try {
@@ -737,10 +598,6 @@ public class GenerateDatabaseMetadataView extends JFrame {
     // End of variables declaration//GEN-END:variables
     private JTable tblTableMetadata;
     private JTable tblColumnMetadata;
-    private JTable tblStoredProcedureMetadata;
-    private JTable tblStoredProcedureParameterMetadata;
-    private JTable tblFunctionMetadata;
-    private JTable tblFunctionParameterMetadata;
     private static String database;
     private static GenerateConnectionController gcc;
 

@@ -1,7 +1,7 @@
 package view;
 
-import controller.GenerateConnectionController;
 import com.formdev.flatlaf.themes.FlatMacDarkLaf;
+import controller.GenerateConnectionController;
 import javax.swing.JFrame;
 import javax.swing.JOptionPane;
 import javax.swing.UIManager;
@@ -185,7 +185,7 @@ public class GenerateConnectionView extends JFrame {
                 JOptionPane.showMessageDialog(null, "Connection established!", "", JOptionPane.INFORMATION_MESSAGE);
                 // Fecha a janela de conexão
                 dispose();
-                // Abre a janela de metadados: tables, columns, procedures, entre outros
+                // Abre a janela de metadados: tables, columns, entre outros
                 GenerateDatabaseMetadataView.main(database, gcc);                
             } catch (RuntimeException e) {
                 // Emite um alerta de erro

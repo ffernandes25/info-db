@@ -1,6 +1,5 @@
 package model.service;
 
-import model.entity.ColumnMetadata;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -8,6 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
+import model.entity.ColumnMetadata;
 
 /**
  * Classe responsável por gerar um JavaBean* a partir de tabelas de banco de

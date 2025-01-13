@@ -1,11 +1,11 @@
 package model.dao;
 
-import model.entity.TableMetadata;
 import java.sql.DatabaseMetaData;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
+import model.entity.TableMetadata;
 
 /**
  *

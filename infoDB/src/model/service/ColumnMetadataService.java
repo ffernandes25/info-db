@@ -1,8 +1,8 @@
 package model.service;
 
+import java.util.List;
 import model.dao.ColumnMetadataDao;
 import model.entity.ColumnMetadata;
-import java.util.List;
 
 /**
  *

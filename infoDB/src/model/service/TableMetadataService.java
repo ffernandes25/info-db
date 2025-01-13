@@ -1,9 +1,9 @@
 package model.service;
 
-import model.dao.TableMetadataDao;
-import model.entity.TableMetadata;
 import java.util.Comparator;
 import java.util.List;
+import model.dao.TableMetadataDao;
+import model.entity.TableMetadata;
 
 /**
  *
