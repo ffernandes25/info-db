@@ -35,12 +35,16 @@ import model.entity.TableMetadata;
  * Classe responsável por exibir uma interface gráfica que exibe os metadados de
  * tabelas e colunas de um banco de dados, permitindo ao usuário carregar essas
  * informações e gerar classes Java (Beans) a partir delas.
- * <p>A interface é composta por dois painéis principais: um para metadados de
+ * <p>
+ * A interface é composta por dois painéis principais: um para metadados de
  * tabelas e outro para colunas. Cada painel oferece opções para carregar os
  * dados e gerar arquivos.</p>
- * <p>A representação em UML desta classe pode ser vista no <strong>Diagrama de Classes</strong> abaixo:</p>
+ * <p>
+ * A representação em UML desta classe pode ser vista no <strong>Diagrama de
+ * Classes</strong> abaixo:</p>
  * <p style="text-align: center"><img src="doc-files/GenerateDatabaseMetadataViewClassDiagram.png" alt="Diagrama de classe da GenerateDatabaseMetadataView"></p>
- * <p>Já a representação visual, na <strong>GUI</strong>:</p>
+ * <p>
+ * Já a representação visual, na <strong>GUI</strong>:</p>
  *
  * @author Fábio Fernandes
  * @version 1.0
@@ -168,26 +172,25 @@ public class GenerateDatabaseMetadataView extends JFrame {
      * @param metadata lista contendo objetos de metadados (tabelas ou colunas)
      * @return JTable populada e configurada
      */
-    private JTable getPopulatedTable(String columnsTitle[], List<?> metadata) {
+    private JTable getPopulatedTable(String[] columnsTitle, List<?> metadata) {
         // Cria um modelo para a tabela
         DefaultTableModel dtModel = new DefaultTableModel();
-        // Adiciona colunas ao modelo
         for (String columnTitle : columnsTitle) {
             dtModel.addColumn(columnTitle);
         }
-        // Obtêm o nome da classe inferida da lista genérica
-        String metadataClassName = metadata.get(0).getClass().getSimpleName();
-        switch (metadataClassName) {
-            // Preenche as linhas do modelo com os metadados conforme o seu respectivo tipo
-            case "TableMetadata":
-                for (TableMetadata tm : (List<TableMetadata>) metadata) {
+        // Garante que a lista não está vazia antes de continuar
+        if (!metadata.isEmpty()) {
+            Object first = metadata.get(0);
+            if (first instanceof TableMetadata) {
+                for (Object obj : metadata) {
+                    TableMetadata tm = (TableMetadata) obj;
                     dtModel.addRow(new Object[]{
                         tm.getName(), tm.getComment()
                     });
                 }
-                break;
-            case "ColumnMetadata":
-                for (ColumnMetadata cm : (List<ColumnMetadata>) metadata) {
+            } else if (first instanceof ColumnMetadata) {
+                for (Object obj : metadata) {
+                    ColumnMetadata cm = (ColumnMetadata) obj;
                     if (!database.equals("Oracle")) {
                         dtModel.addRow(new Object[]{
                             cm.getName(), cm.getDatatype(), cm.getSize(), cm.IsNullable(), cm.isAutoIncrement(), cm.getComment()
@@ -198,7 +201,7 @@ public class GenerateDatabaseMetadataView extends JFrame {
                         });
                     }
                 }
-                break;
+            }
         }
         // Cria a tabela a partir do modelo (com a edição de células bloqueada)
         JTable tbl = new JTable(dtModel) {
@@ -223,6 +226,7 @@ public class GenerateDatabaseMetadataView extends JFrame {
             public void focusGained(FocusEvent evt) {
                 tableMetadataFocusGained();
             }
+
             @Override
             public void focusLost(FocusEvent evt) {
             }
