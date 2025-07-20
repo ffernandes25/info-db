@@ -1,0 +1,67 @@
+@startuml
+
+    ' Oculta o ícone de atributo (bolinha ou chave inglesa) nas classes
+    skinparam classAttributeIconSize 0
+
+    ' Usa o estilo estritamente compatível com UML (sem decorações extras)
+    skinparam style strictuml
+
+    ' Remove sombras dos elementos do diagrama
+    skinparam shadowing false
+
+    ' Usa linhas ortogonais (em ângulos retos) nos relacionamentos
+    skinparam linetype ortho	
+
+    ' Remove separadores visuais entre membros (atributos e métodos)
+    set separator none	
+
+    ' Oculta seções vazias de atributos ou métodos nas classes
+    hide empty members	
+
+    ' Aplica o tema "reddress-darkred" para cores e estilo geral
+    !theme reddress-lightred
+	
+    ' Cria pacote e classe(s)
+    package javax.swing <<Frame>> {	
+        class JFrame <<Class>>			
+    }
+	
+    ' Cria pacote e classe(s)
+    package view <<Frame>> {	
+        class GenerateConnectionView <<Class>> {	
+            - cursor: Cursor
+            - btnConnect: JButton
+            - cboxDatabase: JComboBox<String>
+            - lblConnectionData: JLabel
+            - lblDatabase: JLabel
+            - lblHost: JLabel
+            - lblPassword: JLabel
+            - lblPort: JLabel
+            - lblSchema: JLabel
+            - lblUsername: JLabel
+            - panelConnectionData: JPanel
+            - txtPassword: JPasswordField
+            - separatorConnectionData: JSeparator
+            - txtHost: JTextField
+            - txtPort: JTextField
+            - txtSchema: JTextField
+            - txtUsername: JTextField			
+            + GenerateConnectionView()
+            - initComponents(): void
+            - btnConnectActionPerformed(): void
+            + {static} main(args: String[]): void
+	}
+	class GenerateDatabaseMetadataView <<Class>>	
+    }
+	
+    ' Cria pacote e classe(s)
+    package controller <<Frame>> {	
+        class GenerateConnectionController <<Class>>
+    }
+
+    ' Cria relacionamento(s)
+    JFrame <|-- GenerateConnectionView
+    GenerateConnectionView --> GenerateConnectionController
+    GenerateConnectionView --> GenerateDatabaseMetadataView
+
+@enduml
