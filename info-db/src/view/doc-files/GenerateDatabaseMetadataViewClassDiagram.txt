@@ -1,24 +1,12 @@
 @startuml
 
-    ' Oculta o ícone de atributo (bolinha ou chave inglesa) nas classes
+    ' Define configurações
     skinparam classAttributeIconSize 0
-
-    ' Usa o estilo estritamente compatível com UML (sem decorações extras)
     skinparam style strictuml
-
-    ' Remove sombras dos elementos do diagrama
     skinparam shadowing false
-
-    ' Usa linhas ortogonais (em ângulos retos) nos relacionamentos
-    skinparam linetype ortho	
-
-    ' Remove separadores visuais entre membros (atributos e métodos)
-    set separator none	
-
-    ' Oculta seções vazias de atributos ou métodos nas classes
-    hide empty members	
-
-    ' Aplica o tema "reddress-darkred" para cores e estilo geral
+    skinparam linetype ortho
+    set separator none
+    hide empty members
     !theme reddress-lightred
 	
     ' Cria pacote e classe(s)
@@ -55,15 +43,15 @@
             - btnLoadTableMetadataActionPerformed(): void
             - formWindowClosing(): void
             + {static} main(dbName: String, gcController: GenerateConnectionController): void
-	}	
+		}	
     }
 	
     ' Cria pacote e classe(s)
     package controller <<Frame>> {	
         class GenerateConnectionController <<Class>>
-	class GenerateTableMetadataController <<Class>>
-	class GenerateColumnMetadataController <<Class>>
-	class GenerateBeanController <<Class>>	 	
+		class GenerateTableMetadataController <<Class>>
+		class GenerateColumnMetadataController <<Class>>
+		class GenerateBeanController <<Class>>	 	
     }
 
     ' Cria relacionamentos
