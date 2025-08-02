@@ -7,8 +7,8 @@ import model.service.error.ErrorMessage;
 
 /**
  * Classe responsável por.
- * <p>A representação em UML desta classe pode ser vista no <strong>Diagrama de Classes</strong> abaixo:</p>
- * <p style="text-align: center"><img src="doc-files/GenerateTableMetadataControllerClassDiagram.png" alt="Diagrama de classe da GenerateTableMetadataController"></p>
+ * <p><strong>Diagrama de Classes</strong>:</p>
+ * <p style="text-align: center"><img src="doc-files/GenerateTableMetadataController.png" alt="Diagrama de Classes da GenerateTableMetadataController"></p>
  * 
  * @author Fábio Fernandes
  * @version 1.0

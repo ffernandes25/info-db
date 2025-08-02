@@ -14,7 +14,7 @@
         class GenerateTableMetadataController <<Class>> {	
             + GenerateTableMetadataController()
             + generate(): List<TableMetadata>
-		}	
+	}	
     }
 	
     ' Cria pacote e classe(s)

@@ -6,7 +6,10 @@ import model.service.ColumnMetadataService;
 import model.service.error.ErrorMessage;
 
 /**
- *
+ * Classe responsável por.
+ * <p><strong>Diagrama de Classes</strong>:</p>
+ * <p style="text-align: center"><img src="doc-files/GenerateColumnMetadataController.png" alt="Diagrama de Classes da GenerateColumnMetadataController"></p>
+ * 
  * @author Fábio Fernandes
  * @version 1.0
  */

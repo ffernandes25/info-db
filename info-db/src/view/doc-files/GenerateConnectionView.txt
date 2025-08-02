@@ -38,8 +38,8 @@
             - initComponents(): void
             - btnConnectActionPerformed(): void
             + {static} main(args: String[]): void
-		}
-		class GenerateDatabaseMetadataView <<Class>>	
+	}
+	class GenerateDatabaseMetadataView <<Class>>	
     }
 	
     ' Cria pacote e classe(s)

@@ -9,7 +9,9 @@ import model.service.error.ErrorMessage;
  * Classe responsável por receber requisições da VIEW e repassar para a
  * camada MODEL.SERVICE: as requisições recebidas referem-se à geração de
  * arquivos JavaBeans, a partir de tabelas selecionadas na GUI.
- *
+ * <p><strong>Diagrama de Classes</strong>:</p>
+ * <p style="text-align: center"><img src="doc-files/GenerateBeanController.png" alt="Diagrama de Classes da GenerateBeanController"></p>
+ * 
  * @author Fábio Fernandes
  * @version 1.0
  */

@@ -27,10 +27,8 @@ import javax.swing.WindowConstants;
  * de usuário e senha, além de selecionar o tipo do banco de dados. Após o
  * preenchimento, é possível estabelecer uma conexão e prosseguir para
  * visualização dos metadados do banco.</p>
- * <p>A representação em UML desta classe pode ser vista no <strong>Diagrama de Classes</strong> abaixo:</p>
- * <p style="text-align: center"><img src="doc-files/GenerateConnectionViewClassDiagram.png" alt="Diagrama de classe da GenerateConnectionView"></p>
- * <p>Já a representação visual, na <strong>GUI</strong>:</p>
- * <p style="text-align: center"><img src="doc-files/GenerateConnectionViewGUI.png" alt="GUI da GenerateConnectionView"></p>
+ * <p><strong>Diagrama de Classes</strong>:</p>
+ * <p style="text-align: center"><img src="doc-files/GenerateConnectionView.png" alt="Diagrama de Classes da GenerateConnectionView"></p> 
  * 
  * @author Fábio Fernandes
  * @version 1.0

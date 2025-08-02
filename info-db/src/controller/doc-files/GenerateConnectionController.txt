@@ -1,0 +1,29 @@
+@startuml
+
+    ' Define configurações
+    skinparam classAttributeIconSize 0
+    skinparam style strictuml
+    skinparam shadowing false
+    skinparam linetype ortho
+    set separator none
+    hide empty members
+    !theme reddress-lightred
+	
+    ' Cria pacote e classe(s)
+    package controller <<Frame>> {	
+        class GenerateConnectionController <<Class>> {	
+            + GenerateConnectionController()
+            + generate(database: String, host: String, port: String, schema: String, username: String, password: String): void
+            + closeConnection(): void
+        }	
+    }
+	
+    ' Cria pacote e classe(s)
+    package model.dao <<Frame>> {	
+        class ConnectionFactory <<Class>>
+    }
+
+    ' Cria relacionamento(s)
+    GenerateConnectionController --> ConnectionFactory    
+
+@enduml

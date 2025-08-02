@@ -11,18 +11,18 @@
 	
     ' Cria pacote e classe(s)
     package controller <<Frame>> {	
-        class GenerateTableMetadataController <<Class>> {	
-            + GenerateTableMetadataController()
-            + generate(): List<TableMetadata>
-		}	
+        class GenerateBeanController <<Class>> {	
+            + GenerateBeanController()
+            + generate(tableName: String, cmList: List<ColumnMetadata>): String
+	}	
     }
 	
     ' Cria pacote e classe(s)
     package model.service <<Frame>> {	
-        class TableMetadataService <<Class>>
+        class BeanService <<Class>>
     }
 
     ' Cria relacionamento(s)
-    GenerateTableMetadataController --> TableMetadataService    
+    GenerateBeanController --> BeanService    
 
 @enduml

@@ -35,17 +35,12 @@ import model.entity.TableMetadata;
  * Classe responsável por exibir uma interface gráfica que exibe os metadados de
  * tabelas e colunas de um banco de dados, permitindo ao usuário carregar essas
  * informações e gerar classes Java (Beans) a partir delas.
- * <p>
- * A interface é composta por dois painéis principais: um para metadados de
+ * <p>A interface é composta por dois painéis principais: um para metadados de
  * tabelas e outro para colunas. Cada painel oferece opções para carregar os
  * dados e gerar arquivos.</p>
- * <p>
- * A representação em UML desta classe pode ser vista no <strong>Diagrama de
- * Classes</strong> abaixo:</p>
- * <p style="text-align: center"><img src="doc-files/GenerateDatabaseMetadataViewClassDiagram.png" alt="Diagrama de classe da GenerateDatabaseMetadataView"></p>
- * <p>
- * Já a representação visual, na <strong>GUI</strong>:</p>
- *
+ * <p><strong>Diagrama de Classes</strong>:</p>
+ * <p style="text-align: center"><img src="doc-files/GenerateDatabaseMetadataView.png" alt="Diagrama de Classes da GenerateDatabaseMetadataView"></p>
+ * 
  * @author Fábio Fernandes
  * @version 1.0
  */
@@ -226,7 +221,6 @@ public class GenerateDatabaseMetadataView extends JFrame {
             public void focusGained(FocusEvent evt) {
                 tableMetadataFocusGained();
             }
-
             @Override
             public void focusLost(FocusEvent evt) {
             }

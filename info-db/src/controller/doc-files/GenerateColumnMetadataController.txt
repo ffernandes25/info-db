@@ -1,0 +1,28 @@
+@startuml
+
+    ' Define configurações
+    skinparam classAttributeIconSize 0
+    skinparam style strictuml
+    skinparam shadowing false
+    skinparam linetype ortho
+    set separator none
+    hide empty members
+    !theme reddress-lightred
+	
+    ' Cria pacote e classe(s)
+    package controller <<Frame>> {	
+        class GenerateColumnMetadataController <<Class>> {	
+            + GenerateColumnMetadataController()
+            + generate(tableName: String, database: String): List<ColumnMetadata>
+	}	
+    }
+	
+    ' Cria pacote e classe(s)
+    package model.service <<Frame>> {	
+        class ColumnMetadataService <<Class>>
+    }
+
+    ' Cria relacionamento(s)
+    GenerateColumnMetadataController --> ColumnMetadataService    
+
+@enduml

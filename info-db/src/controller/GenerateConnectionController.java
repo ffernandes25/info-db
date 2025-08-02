@@ -4,7 +4,10 @@ import model.dao.ConnectionFactory;
 import model.service.error.ErrorMessage;
 
 /**
- *
+ * Classe responsável por.
+ * <p><strong>Diagrama de Classes</strong>:</p>
+ * <p style="text-align: center"><img src="doc-files/GenerateConnectionController.png" alt="Diagrama de Classes da GenerateConnectionController"></p>
+ * 
  * @author Fábio Fernandes
  * @version 1.0
  */
