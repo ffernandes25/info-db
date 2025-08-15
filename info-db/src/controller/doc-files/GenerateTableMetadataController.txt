@@ -22,7 +22,13 @@
         class TableMetadataService <<Class>>
     }
 
+    ' Cria pacote e classe(s)
+    package model.service.error <<Frame>> {
+        class ErrorMessage <<Class>>    
+    }
+
     ' Cria relacionamento(s)
-    GenerateTableMetadataController --> TableMetadataService    
+    GenerateTableMetadataController --> TableMetadataService
+    GenerateTableMetadataController ..> ErrorMessage
 
 @enduml

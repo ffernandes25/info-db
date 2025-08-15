@@ -22,7 +22,13 @@
         class BeanService <<Class>>
     }
 
+    ' Cria pacote e classe(s)
+    package model.service.error <<Frame>> {
+        class ErrorMessage <<Class>>    
+    }
+
     ' Cria relacionamento(s)
-    GenerateBeanController --> BeanService    
+    GenerateBeanController --> BeanService
+    GenerateBeanController ..> ErrorMessage
 
 @enduml

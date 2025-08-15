@@ -1,7 +1,10 @@
 package model.service.error;
 
 /**
- *
+ * Classe responsável por.
+ * <p><strong>Diagrama de Classes</strong>:</p>
+ * <p style="text-align: center"><img src="doc-files/ErrorMessage.png" alt="Diagrama de Classes da ErrorMessage"></p>
+ * 
  * @author Fábio Fernandes
  * @version 1.0
  */

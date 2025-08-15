@@ -47,7 +47,7 @@ public class BeanService {
      * @param columnMetadata
      * @return attributeNames
      */
-    public List<String> generateAttributeNames(List<ColumnMetadata> columnMetadata) {
+    private List<String> generateAttributeNames(List<ColumnMetadata> columnMetadata) {
         List<List<String>> separateNameAll = new ArrayList<>();
         for (int i = 0; i < columnMetadata.size(); i++) {
             List<String> separateName = new ArrayList<>(Arrays.asList(columnMetadata.get(i).getName().toLowerCase().split("_")));
@@ -78,7 +78,7 @@ public class BeanService {
      * @param columnMetadata
      * @return attributeTypes
      */
-    public List<String> generateAttributeTypes(List<ColumnMetadata> columnMetadata) {
+    private List<String> generateAttributeTypes(List<ColumnMetadata> columnMetadata) {
         List<String> attributeTypes = new ArrayList<>();
         for (int i = 0; i < columnMetadata.size(); i++) {
             switch (columnMetadata.get(i).getDatatype()) {
@@ -109,7 +109,7 @@ public class BeanService {
      * @param attributeTypes
      * @return importNames
      */
-    public List<String> generateImportNames(List<String> attributeTypes) {
+    private List<String> generateImportNames(List<String> attributeTypes) {
         List<String> importNames = new ArrayList<>();
         int countLocalDateImport = 0;
         for (int i = 0; i < attributeTypes.size(); i++) {
@@ -131,7 +131,7 @@ public class BeanService {
      * @param tableName
      * @return className
      */
-    public String generateClassName(String tableName) {
+    private String generateClassName(String tableName) {
         List<String> separateTableName = Arrays.asList(tableName.toLowerCase().split("_"));
         String className = "";
         for (int i = 0; i < separateTableName.size(); i++) {
@@ -152,7 +152,7 @@ public class BeanService {
      * @param attributeTypes
      * @return classContent
      */
-    public String generateClassContent(String className, List<String> importNames, List<String> attributeNames, List<String> attributeTypes) {
+    private String generateClassContent(String className, List<String> importNames, List<String> attributeNames, List<String> attributeTypes) {
         String classContent = "";
         classContent = classContent.concat("package model;\n\n");
         importNames.add("java.io.Serializable");
@@ -188,7 +188,7 @@ public class BeanService {
      * @param classContent
      * @return fileName
      */
-    public String generateFile(String className, String classContent) {
+    private String generateFile(String className, String classContent) {
         String fileName = className.concat(".java");
         FileWriter file;
         try {

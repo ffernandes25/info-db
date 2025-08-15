@@ -23,7 +23,13 @@
         class ConnectionFactory <<Class>>
     }
 
+    ' Cria pacote e classe(s)
+    package model.service.error <<Frame>> {
+        class ErrorMessage <<Class>>    
+    }
+
     ' Cria relacionamento(s)
-    GenerateConnectionController --> ConnectionFactory    
+    GenerateConnectionController --> ConnectionFactory
+    GenerateConnectionController ..> ErrorMessage
 
 @enduml
